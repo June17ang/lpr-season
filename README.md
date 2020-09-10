@@ -16,6 +16,20 @@ constructor(props) {
 }
 ```
 
+** another way to init state **
+~ Babel will generate the constructor
+
+```javascript
+//create state without constructor
+state = {
+  lat: null,
+  long: null,
+  errorMessage: "",
+};
+```
+
+## Notes for ownselve
+
 Create a state init using component life cycle
 
 - constructor <br />
