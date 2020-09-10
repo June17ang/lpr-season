@@ -22,6 +22,7 @@ class App extends Component {
       }
     );
   }
+
   render() {
     if (this.state.errorMessage && !this.state.long && !this.state.lat) {
       return (

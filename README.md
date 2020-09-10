@@ -16,6 +16,29 @@ constructor(props) {
 }
 ```
 
+Create a state init using component life cycle
+
+- constructor <br />
+  <em>good place to do one time setup</em>
+  <br />
+  <br />
+- render [will be call many time when component update]<br />
+  <em>avoid doing anything besides returning jsx</em>
+  <br />
+  <br />
+- componentDidMount [content visibale on screen]<br />
+  <em>good place to do data loading</em>
+  <br />
+  <br />
+- componentDidUpdate [sit and wait for update]<br />
+  <em>good place to do more data loading when state/props change</em>
+  <br />
+  <br />
+- componenWillUnMount [sit and wait until this component is not longer shown]<br />
+  <em>good place to do cleanup (especially for non-React stuff)</em>
+  <br />
+  <br />
+
 Feature:
 
 - Able to get geolocation
