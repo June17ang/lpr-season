@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import SeasonDisplay from "./SeasonDisplay";
+import Loader from "./Loader";
 
 class App extends Component {
   state = {
@@ -13,31 +15,30 @@ class App extends Component {
       (position) =>
         this.setState({
           lat: position.coords.latitude,
-          long: position.coords.longitude,
         }),
       (err) => this.setState({ errorMessage: err.message })
     );
   }
 
-  render() {
-    if (this.state.errorMessage && !this.state.long && !this.state.lat) {
+  //create a helper function
+  renderContent = () => {
+    if (this.state.errorMessage && !this.state.lat) {
       return (
-        <div>
+        <div className="error-msg">
           <em>Error :{this.state.errorMessage}</em>
         </div>
       );
     }
 
-    if (!this.state.errorMessage && this.state.long && this.state.lat) {
-      return (
-        <div>
-          <div>Latitube: {this.state.lat}</div>
-          <div>Longtitube: {this.state.long}</div>
-        </div>
-      );
+    if (!this.state.errorMessage && this.state.lat) {
+      return <SeasonDisplay lat={this.state.lat} />;
     }
 
-    return <div>Loading ...</div>;
+    return <Loader message="Please allow location request" />;
+  };
+
+  render() {
+    return <div>{this.renderContent()}</div>;
   }
 }
 
