@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import faker from "faker";
-import CommentDetail from "./components/CommentDetail";
-import ApprovalCard from "./components/ApprovalCard";
 
 const App = () => {
+  window.navigator.geolocation.getCurrentPosition(
+    (position) => console.log(position),
+    (err) => console.log(err)
+  );
   return <div>Season</div>;
 };
 
