@@ -39,6 +39,12 @@ Create a state init using component life cycle
   <br />
   <br />
 
+  **Another life cycle (rarely used)**
+
+  - shouldComponentUpdate
+  - getDerivedStateFromProps
+  - getSnapshotBeforeUpdate
+
 Feature:
 
 - Able to get geolocation
