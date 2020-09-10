@@ -5,8 +5,9 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lat: 40,
-      long: 10,
+      lat: null,
+      long: null,
+      errorMessage: "",
     };
 
     window.navigator.geolocation.getCurrentPosition(
@@ -16,16 +17,30 @@ class App extends Component {
           long: position.coords.longitude,
         });
       },
-      (err) => console.log(err)
+      (err) => {
+        this.setState({ errorMessage: err.message });
+      }
     );
   }
   render() {
-    return (
-      <div>
-        <div>Latitube: {this.state.lat}</div>
-        <div>Longtitube: {this.state.long}</div>
-      </div>
-    );
+    if (this.state.errorMessage && !this.state.long && !this.state.lat) {
+      return (
+        <div>
+          <em>Error :{this.state.errorMessage}</em>
+        </div>
+      );
+    }
+
+    if (!this.state.errorMessage && this.state.long && this.lat) {
+      return (
+        <div>
+          <div>Latitube: {this.state.lat}</div>
+          <div>Longtitube: {this.state.long}</div>
+        </div>
+      );
+    }
+
+    return <div>Loading ...</div>;
   }
 }
 
